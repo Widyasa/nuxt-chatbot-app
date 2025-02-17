@@ -11,7 +11,7 @@ import Sidebar from "~/components/ui/sidebar.vue";
           <Sidebar />
         </div>
         <div class="col-span-10">
-          <div class="section">
+          <div class="">
             <slot></slot>
           </div>
         </div>
