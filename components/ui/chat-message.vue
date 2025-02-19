@@ -3,8 +3,8 @@ defineProps(['role', 'message'])
 </script>
 
 <template>
-  <div v-if="role === 'assistant'" class="justify-start flex">
-    <div class="p-3 ">
+  <div v-if="role === 'assistant'" class="justify-start flex w-full">
+    <div class="p-3 w-full">
       <MDC tag="article" class="markdown-body" :value="message"></MDC>
     </div>
   </div>

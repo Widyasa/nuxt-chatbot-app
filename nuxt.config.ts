@@ -59,7 +59,7 @@ export default defineNuxtConfig({
   },
   mdc: {
     highlight: {
-      theme: 'dracula',
+      theme: 'github-dark',
       // langs: ['ts'],
       wrapperStyle: true
     },
