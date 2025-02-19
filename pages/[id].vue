@@ -6,18 +6,17 @@ definePageMeta({
 })
 const chatStore = useChat()
 await chatStore.getMessagesByChat()
+const scrollOverFlow = () => {
+  const overflow = document.getElementById("overflow")
+  overflow?.scrollTo(0, overflow.scrollHeight,);
+}
 </script>
 
 <template>
-  <div class="mt-20">
-    <div class="absolute  z-10 mx-[20%]">
-      <div class="fixed bottom-8 w-[800px]">
-        <input-prompt />
-      </div>
-    </div>
-    <div class="overflow-auto max-h-[55vh] relative">
-      <div class="flex justify-center section">
-        <div class="mx-[20%] w-[850px]">
+  <div class="relative">
+    <div id="overflow" class="overflow-auto overflow-chat h-[70vh] relative pt-20">
+      <div class="flex justify-center section pb-[50vh]">
+        <div class="mx-auto w-[850px]">
           <div class="" v-for="(item, index) in chatStore.chats" :key="index">
             <chat-message role="user" :message="item.question" />
             <chat-message role="assistant" :message="item.answer" />
@@ -28,9 +27,15 @@ await chatStore.getMessagesByChat()
         </div>
       </div>
     </div>
+    <div class="mt-2 w-full">
+      <div class="w-full">
+        <div class="w-[800px] mx-auto">
+          <input-prompt @auto-scroll="scrollOverFlow"/>
+        </div>
+      </div>
+    </div>
   </div>
 </template>
 
 <style scoped>
-
 </style>

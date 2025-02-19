@@ -13,9 +13,10 @@ onMounted(async () => {
 
 <template>
   <div class="p-8">
-    <p class="text-center w-full border-b pb-5 border-b-[#212121]">
-      Logo
-    </p>
+    <NuxtLink to="/" class="flex gap-3 items-center">
+      <img src="https://otakotaku.com/asset/img/character/2023/10/himmel-651c32dd35013p.jpg" alt="" class="size-[40px] rounded-full aspect-square object-cover">
+      <p class="">Himmel Chatbot</p>
+    </NuxtLink>
     <div class=" mt-8">
       <form @submit.prevent="chatStore.createChat()">
         <button type="submit" class="btn btn-primary w-full">Add new chat</button>

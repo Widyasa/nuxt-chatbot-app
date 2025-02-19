@@ -69,7 +69,7 @@ export default defineNuxtConfig({
       title: "Widyasa Chatbot",
     },
   },
-  css: ['~/assets/css/main.css'],
+  css: ['~/assets/css/main.css', '~/assets/css/github-markdown.css'],
   postcss: {
     plugins: {
       tailwindcss: {},

@@ -67,7 +67,6 @@ export const useChat = defineStore('useChatStore', {
         async getMessagesByChat() {
             const route = useRoute()
           this.chats = await $fetch(`/api/message/${route.params.id}`)
-            console.log(this.chats)
         },
         async chat(question:string) {
             this.isLoading = true
@@ -84,7 +83,7 @@ export const useChat = defineStore('useChatStore', {
             for await (const item of response) {
                 this.answer += item.message.content
             }
-            await $fetch('/api/message/create', {
+            const newData = await $fetch('/api/message/create', {
                 method: 'POST',
                 body: {
                     question: question,
