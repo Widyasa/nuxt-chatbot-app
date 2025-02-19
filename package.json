@@ -10,8 +10,10 @@
     "postinstall": "nuxt prepare"
   },
   "dependencies": {
+    "@nuxtjs/mdc": "^0.13.5",
     "@pinia/nuxt": "^0.10.1",
     "@primevue/themes": "^4.2.5",
+    "@prisma/nuxt": "^0.3.0",
     "nuxt": "^3.15.4",
     "ollama": "^0.5.13",
     "pinia": "^3.0.1",
