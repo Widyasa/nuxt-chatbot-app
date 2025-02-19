@@ -51,6 +51,19 @@ const Noir = definePreset(Aura, {
 export default defineNuxtConfig({
   compatibilityDate: '2024-11-01',
   devtools: { enabled: true },
+  publicRuntimeConfig: {
+    public: {
+      MODEL:process.env.MODEL_NAME,
+      DB:process.env.DATABASE_URL
+    }
+  },
+  mdc: {
+    highlight: {
+      theme: 'dracula',
+      // langs: ['ts'],
+      wrapperStyle: true
+    },
+  },
   app: {
     head: {
       title: "Widyasa Chatbot",
@@ -65,7 +78,9 @@ export default defineNuxtConfig({
   },
   modules: [
     '@pinia/nuxt',
-    '@primevue/nuxt-module'
+    '@primevue/nuxt-module',
+    '@nuxtjs/mdc',
+    '@prisma/nuxt'
   ],
   primevue: {
     options: {

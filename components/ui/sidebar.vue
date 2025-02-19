@@ -5,6 +5,10 @@ import Modal from "~/components/ui/modal.vue";
 import DeleteModal from "~/components/ui/delete-modal.vue";
 const visibleUpdateModal = ref(false)
 const visibleDeleteModal = ref(false)
+const chatStore = useChat()
+onMounted(async () => {
+    await chatStore.getAllChat()
+})
 </script>
 
 <template>
@@ -13,16 +17,16 @@ const visibleDeleteModal = ref(false)
       Logo
     </p>
     <div class=" mt-8">
-      <button class="btn btn-primary w-full">Add new chat</button>
+      <form @submit.prevent="chatStore.createChat()">
+        <button type="submit" class="btn btn-primary w-full">Add new chat</button>
+      </form>
     </div>
     <div class="flex flex-col mt-9">
-      <chat-nav nav-route="/" nav-name="Home" @update-data="visibleUpdateModal = true" @delete-data="visibleDeleteModal = true"/>
-      <chat-nav nav-route="/chat/1" nav-name="Home 2" @update-data="visibleUpdateModal = true" @delete-data="visibleDeleteModal = true"/>
-      <chat-nav nav-route="/chat/2" nav-name="Home 3" @update-data="visibleUpdateModal = true" @delete-data="visibleDeleteModal = true"/>
+      <chat-nav v-for="(item, index) in chatStore.allChat"  :key="index" :id="item.id" :nav-route="`/${item.id}`" :nav-name="item.name" @update-data="visibleUpdateModal = true" @delete-data="visibleDeleteModal = true"/>
     </div>
   </div>
-  <modal v-model:visible="visibleUpdateModal" />
-  <delete-modal v-model:visible="visibleDeleteModal" />
+  <modal @close-modal="visibleUpdateModal = false" v-model:visible="visibleUpdateModal" />
+  <delete-modal @close-modal="visibleDeleteModal = false" v-model:visible="visibleDeleteModal" />
 </template>
 
 <style scoped>
