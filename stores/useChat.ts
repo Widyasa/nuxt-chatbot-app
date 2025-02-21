@@ -72,9 +72,9 @@ export const useChat = defineStore('useChatStore', {
             this.isLoading = true
             this.isResponding = true
             const message = {role: 'user', content: question}
-            this.messages = question
+            this.messages = question.trim()
             const response:any = await ollama.chat({
-                model: 'gemma',
+                model: 'deepseek-r1:1.5b',
                 messages: [message],
                 stream:true
             })
